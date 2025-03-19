@@ -26,7 +26,7 @@ A lightweight expense tracking system for small teams, built with Node.js, SQLit
    node server.js
 
 4. **Access**:
-   http://localhost:3000
+   http://localhost:8080
 
 5. **Deployment**:
    ```bash

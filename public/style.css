@@ -1,0 +1,92 @@
+.section { 
+    padding: 20px; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+  }
+  input, button, select { 
+    margin: 5px; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+  }
+  button { 
+    background-color: #4CAF50; 
+    color: white; 
+    cursor: pointer; 
+  }
+  button:hover { 
+    background-color: #45a049; 
+  }
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 10px; 
+    table-layout: auto; 
+  }
+  th, td { 
+    border: 1px solid #ddd; 
+    padding: 8px; 
+    text-align: left; 
+  }
+  th { 
+    background-color: #f2f2f2; 
+    position: sticky; 
+    top: 0; 
+  }
+  td:nth-child(3) { /* Reason column */
+    max-width: 200px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+  td:nth-child(3):hover::after { 
+    content: attr(data-full-text); 
+    position: absolute; 
+    background: #fff; 
+    border: 1px solid #ddd; 
+    padding: 5px; 
+    z-index: 10; 
+    white-space: normal; 
+    max-width: 300px; 
+  }
+  td.status-pending { background-color: #fff3cd; }
+  td.status-dept-approved { background-color: #cce5ff; }
+  td.status-reimbursed { background-color: #d4edda; }
+  .error { 
+    color: red; 
+    margin: 5px 0; 
+  }
+  .hidden { 
+    display: none; 
+  }
+  #summary { 
+    margin: 10px 0; 
+    font-weight: bold; 
+  }
+  @media (max-width: 600px) {
+    table, thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    th { 
+      position: relative; 
+    }
+    td { 
+      border: none; 
+      border-bottom: 1px solid #ddd; 
+      position: relative; 
+      padding-left: 50%; 
+    }
+    td:before { 
+      content: attr(data-label); 
+      position: absolute; 
+      left: 6px; 
+      width: 45%; 
+      padding-right: 10px; 
+      white-space: nowrap; 
+      font-weight: bold; 
+    }
+    td:nth-child(3) { 
+      max-width: none; 
+      white-space: normal; 
+    }
+  }

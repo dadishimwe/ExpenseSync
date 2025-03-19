@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpenseSync</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login" class="section">
+    <h1>Login</h1>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+    <button onclick="showRegister()">Register</button>
+    <button onclick="showPasswordReset()">Reset Password</button>
+    <div id="login-error" class="error"></div>
+  </div>
+
+  <div id="register" class="section" style="display: none;">
+    <h1>Register</h1>
+    <input type="text" id="reg-username" placeholder="Username" required>
+    <input type="text" id="reg-name" placeholder="Full Name" required>
+    <input type="password" id="reg-password" placeholder="Password" required>
+    <select id="department" required>
+      <option value="Tech">Tech</option>
+      <option value="Sales">Sales</option>
+    </select>
+    <button onclick="register()">Register</button>
+    <button onclick="showLogin()">Back to Login</button>
+  </div>
+
+  <div id="password-reset" class="section" style="display: none;">
+    <h1>Reset Password</h1>
+    <input type="text" id="reset-username" placeholder="Username" required>
+    <input type="password" id="reset-new-password" placeholder="New Password" required>
+    <button onclick="resetPassword()">Reset</button>
+    <button onclick="showLogin()">Back to Login</button>
+  </div>
+
+  <div id="dashboard" class="section" style="display: none;">
+    <h1>Expense Dashboard</h1>
+    <p>Welcome, <span id="user-name"></span> (<span id="user-role"></span>)</p>
+    <div id="summary">Total Expenses: <span id="total-expenses">0</span> Rwf</div>
+    <button onclick="logout()">Logout</button>
+    <button onclick="showChangePassword()">Change Password</button>
+    <div id="staff-section">
+      <h2>Submit Expense</h2>
+      <form id="expense-form" onsubmit="event.preventDefault(); submitExpense();">
+        <input type="date" id="date" required>
+        <input type="text" id="reason" placeholder="Reason" required>
+        <input type="number" id="amount" placeholder="Amount" step="0.01" min="0" required>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="expense-error" class="error"></div>
+    </div>
+    <div id="admin-section" style="display: none;">
+      <h2>Admin Controls</h2>
+      <input type="text" id="new-staff-username" placeholder="New Staff Username">
+      <input type="text" id="new-staff-name" placeholder="New Staff Name">
+      <input type="password" id="new-staff-password" placeholder="New Staff Password">
+      <button onclick="createStaff()">Create Staff</button>
+      <button id="toggle-staff-btn" onclick="toggleStaffList()">Show Staff List</button>
+      <div id="staff-list" style="display: none;">
+        <h3>Staff List</h3>
+        <table id="staff-table">
+          <thead><tr><th>ID</th><th>Username</th><th>Name</th><th>Department</th><th>Action</th></tr></thead>
+          <tbody id="staff-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="finance-section" style="display: none;">
+      <h2>Finance Controls</h2>
+      <button id="toggle-finance-staff-btn" onclick="toggleStaffList()">Show Staff List</button>
+      <div id="finance-staff-list" style="display: none;">
+        <h3>All Staff</h3>
+        <table id="finance-staff-table">
+          <thead><tr><th>ID</th><th>Username</th><th>Name</th><th>Department</th></tr></thead>
+          <tbody id="finance-staff-body"></tbody>
+        </table>
+      </div>
+      <h3>Generate Reimbursement Report</h3>
+      <input type="date" id="start-date">
+      <input type="date" id="end-date">
+      <button onclick="generateReport()">Generate CSV</button>
+      <a id="download-link" style="display: none;" href="#" download="reimbursement_report.csv">Download Report</a>
+    </div>
+    <h2>Expenses</h2>
+    <select id="status-filter" onchange="loadExpenses()">
+      <option value="">All Statuses</option>
+      <option value="Pending">Pending</option>
+      <option value="Dept_Approved">Dept Approved</option>
+      <option value="Reimbursed">Reimbursed</option>
+    </select>
+    <table id="expense-table">
+      <thead>
+        <tr><th>Name</th><th>Date</th><th>Reason</th><th>Amount</th><th>Status</th><th>Timestamp</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="expense-body"></tbody>
+    </table>
+  </div>
+
+  <div id="change-password" class="section" style="display: none;">
+    <h1>Change Password</h1>
+    <input type="password" id="new-password" placeholder="New Password" required>
+    <button onclick="changePassword()">Change</button>
+    <button onclick="showDashboard()">Back</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
