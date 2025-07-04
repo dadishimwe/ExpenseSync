@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExpenseSync</title>
+  <title>UMU App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
     <input type="text" id="reg-name" placeholder="Full Name" required>
     <input type="password" id="reg-password" placeholder="Password" required>
     <select id="department" required>
-      <option value="Tech">Tech</option>
+      <option value="Tech">Admin</option>
       <option value="Sales">Sales</option>
     </select>
     <button onclick="register()">Register</button>
@@ -79,7 +79,7 @@
           <tbody id="finance-staff-body"></tbody>
         </table>
       </div>
-      <h3>Generate Reimbursement Report</h3>
+      <h3>Generate Sales Report</h3>
       <input type="date" id="start-date">
       <input type="date" id="end-date">
       <button onclick="generateReport()">Generate CSV</button>
